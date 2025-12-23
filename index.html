@@ -1,96 +1,6 @@
-index.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>For You ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body onclick="handleTap()">
 
-  <style>
-    body {
-      margin: 0;
-      background: black;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .message {
-      position: absolute;
-      top: 20%;
-      text-align: center;
-      font-size: 2rem;
-      z-index: 10;
-    }
-
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: float 6s linear infinite;
-    }
-
-    .heart::before,
-    .heart::after {
-      content: "";
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-
-    @keyframes float {
-      0% {
-        bottom: -10%;
-        opacity: 1;
-      }
-      100% {
-        bottom: 110%;
-        opacity: 0;
-        transform: translateX(-30px) rotate(45deg);
-      }
-    }
-
-    .rose {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Red_rose.svg/512px-Red_rose.svg.png");
-      background-size: cover;
-      animation: fall 8s linear infinite;
-    }
-
-    @keyframes fall {
-      0% {
-        top: -10%;
-      }
-      100% {
-        top: 110%;
-      }
-    }
-  </style>
-</head>
-
-<body onclick="playMusic()">
-
-  <div class="message">
+  <div class="message" id="message">
     I’ve got my eyes on you ❤️<br>
     Always.
   </div>
@@ -98,9 +8,30 @@ index.html
   <audio id="music" src="eyes_on_you.mp3.mp3"></audio>
 
   <script>
-    function playMusic() {
+    let tapped = false;
+
+    function handleTap() {
       const music = document.getElementById("music");
-      music.play();
+      const message = document.getElementById("message");
+
+      if (!tapped) {
+        music.play();
+
+        message.innerHTML = `
+          I LOVE YOU SO MUCH ❤️<br><br>
+          BHUMIKA,<br><br>
+          Maine tere liye kuch banana chaha tha paper ka, handmade...<br>
+          wo ban nahi paya 🥺<br><br>
+          Lekin yeh first time hai<br>
+          main kisi ke liye aisa kuch kar raha hoon,<br>
+          kyunki tum meri duniya ho 🌍❤️<br><br>
+          I LOVE YOU SO MUCH 💖<br><br>
+          MERRY CHRISTMAS 🎄<br>
+          MY GURL ❤️
+        `;
+
+        tapped = true;
+      }
     }
 
     function createHeart() {
@@ -108,7 +39,6 @@ index.html
       heart.className = "heart";
       heart.style.left = Math.random() * 100 + "vw";
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 6000);
     }
 
@@ -117,7 +47,6 @@ index.html
       rose.className = "rose";
       rose.style.left = Math.random() * 100 + "vw";
       document.body.appendChild(rose);
-
       setTimeout(() => rose.remove(), 8000);
     }
 
@@ -126,4 +55,3 @@ index.html
   </script>
 
 </body>
-</html>
