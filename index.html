@@ -1,3 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For You ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Cache fix -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      cursor: pointer;
+    }
+
+    .message {
+      position: absolute;
+      top: 20%;
+      text-align: center;
+      font-size: 2rem;
+      z-index: 10;
+      padding: 0 20px;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+      box-shadow: 0 0 10px red;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -10%;
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(-30px) rotate(45deg);
+      }
+    }
+  </style>
+</head>
+
 <body onclick="handleTap()">
 
   <div class="message" id="message">
@@ -22,9 +101,9 @@
           BHUMIKA,<br><br>
           Maine tere liye kuch banana chaha tha paper ka, handmade...<br>
           wo ban nahi paya 🥺<br><br>
-          Lekin yeh first time hai<br>
+          Lekin yeh first time hai kisike liye itna karne ka man <br>
           main kisi ke liye aisa kuch kar raha hoon,<br>
-          kyunki tum meri duniya ho 🌍❤️<br><br>
+          kyunki you mean world to me 🌍❤️<br><br>
           I LOVE YOU SO MUCH 💖<br><br>
           MERRY CHRISTMAS 🎄<br>
           MY GURL ❤️
@@ -38,20 +117,14 @@
       const heart = document.createElement("div");
       heart.className = "heart";
       heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
+
+      setTimeout(() => heart.remove(), 8000);
     }
 
-    function createRose() {
-      const rose = document.createElement("div");
-      rose.className = "rose";
-      rose.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(rose);
-      setTimeout(() => rose.remove(), 8000);
-    }
-
-    setInterval(createHeart, 400);
-    setInterval(createRose, 700);
+    setInterval(createHeart, 350);
   </script>
 
 </body>
+</html>
