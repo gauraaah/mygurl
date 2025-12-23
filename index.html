@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For You ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .message {
+      position: absolute;
+      top: 20%;
+      text-align: center;
+      font-size: 2rem;
+      z-index: 10;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -10%;
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(-30px) rotate(45deg);
+      }
+    }
+
+    .rose {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Red_rose.svg/512px-Red_rose.svg.png");
+      background-size: cover;
+      animation: fall 8s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+      }
+      100% {
+        top: 110%;
+      }
+    }
+  </style>
+</head>
+
+<body onclick="playMusic()">
+
+  <div class="message">
+    I’ve got my eyes on you ❤️<br>
+    Always.
+  </div>
+
+  <audio id="music" src="eyes_on_you.mp3.mp3"></audio>
+
+  <script>
+    function playMusic() {
+      const music = document.getElementById("music");
+      music.play();
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    function createRose() {
+      const rose = document.createElement("div");
+      rose.className = "rose";
+      rose.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(rose);
+
+      setTimeout(() => rose.remove(), 8000);
+    }
+
+    setInterval(createHeart, 400);
+    setInterval(createRose, 700);
+  </script>
+
+</body>
+</html>
